@@ -5,12 +5,18 @@
  */
 package json;
 
+/**
+ * Se crea la clase Curso, la cual se utiliza para crear las tablas (prueba).
+ * @author cristhian
+ * @version 6/11/15
+ */
 public class Curso {
  
     private String carne;
     private String nombre;
     private String telefono;
  
+    // Los siguentes son métodos set y get, los cuales sirven para obetener y otorgar datos.
     public String getCarne() {
         return carne;
     }

@@ -35,6 +35,10 @@ SOFTWARE.
 * @version 2014-05-03
 */
 public class JSONTokener {
+
+    public static int dehexchar(Object x) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 private long character;
 private boolean eof;
 private long index;

@@ -5,8 +5,9 @@ import java.util.List;
 import json.Curso;
  
 /**
- *
- * @author Rolando
+ *Esta es otra clase, para la prueba.
+ * @author cristhian
+ * @version 6/11/15
  */
 public class Vendedor {
  
