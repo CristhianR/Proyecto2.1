@@ -1,19 +1,18 @@
-    /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Arboles;
 
+package Arboles;
 /**
- *
- * @author Arkone
+ * Se declara la clase SplayBST
+ *se encuentra toda la logica del arbol y creacion de nodos
+ * @author Roberto Pereira
+ * @version 06/11/15
  */
 public class SplayBST<Key extends Comparable<Key>, Value>  {
 
     private Node root;   // root of the BST
 
-    // BST helper node data type
+    /**
+     * Constructor
+     */
     private class Node {
         private Key key;            // key
         private Object value;        // associated data
@@ -29,8 +28,11 @@ public class SplayBST<Key extends Comparable<Key>, Value>  {
         return get(key) != null;
     }
 
-    // return value associated with the given key
-    // if no such value, return null
+    /**
+     * Create the class get
+     * @param key: The key of el nodo
+     * @return value associated with the given key or null if don't 
+     */
     public Object get(Key key) {
         root = splay(root, key);
         int cmp = key.compareTo(root.key);
@@ -45,9 +47,11 @@ public class SplayBST<Key extends Comparable<Key>, Value>  {
         else          System.out.println("no esta");
     }
     
-   /***************************************************************************
-    *  Splay tree insertion.
-    ***************************************************************************/
+   /**
+    * Create the class to insert the node
+    * @param key: Key of the node to insert
+    * @param value: The object by the node
+    */
     public void put(Key key, Object value) {
         // splay key to root
         if (root == null) {
@@ -84,16 +88,17 @@ public class SplayBST<Key extends Comparable<Key>, Value>  {
 
     }
     
-   /***************************************************************************
-    *  Splay tree deletion.
-    ***************************************************************************/
-    /* This splays the key, then does a slightly modified Hibbard deletion on
+   
+    /**
+     * Create class remove
+     * This splays the key, then does a slightly modified Hibbard deletion on
      * the root (if it is the node to be deleted; if it is not, the key was 
      * not in the tree). The modification is that rather than swapping the
      * root (call it node A) with its successor, it's successor (call it Node B)
      * is moved to the root position by splaying for the deletion key in A's 
      * right subtree. Finally, A's right child is made the new root's right 
      * child.
+     * @param key: The key of the node to want to delete
      */
     public void remove(Key key) {
         if (root == null) return; // empty tree
@@ -117,13 +122,14 @@ public class SplayBST<Key extends Comparable<Key>, Value>  {
         // else: it wasn't in the tree to remove
     }
     
-    
-   /***************************************************************************
-    * Splay tree function.
-    * **********************************************************************/
-    // splay key in the tree rooted at Node h. If a node with that key exists,
-    //   it is splayed to the root of the tree. If it does not, the last node
-    //   along the search path for the key is splayed to the root.
+    /**
+     * play key in the tree rooted at Node h. If a node with that key exists,
+     * it is splayed to the root of the tree. If it does not, the last node
+     * along the search path for the key is splayed to the root.
+     * @param h: nodo
+     * @param key: Key of the node
+     * @return 
+     */
     private Node splay(Node h, Key key) {
         if (h == null) return null;
 
@@ -174,11 +180,11 @@ public class SplayBST<Key extends Comparable<Key>, Value>  {
     }
 
 
-   /***************************************************************************
-    *  Helper functions.
-    ***************************************************************************/
-
-    // height of tree (1-node tree has height 0)
+   /**
+    * Helper funtcions
+    * @return height of tree (1-node tree has height 0
+    */
+  
     public int height() { return height(root); }
     private int height(Node x) {
         if (x == null) return -1;

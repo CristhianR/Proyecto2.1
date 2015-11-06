@@ -1,15 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Arboles;
-
-import java.util.Random;
-
-
-
-
 
 /**
  * Se crea la clase AvlTree
@@ -34,7 +23,7 @@ public class AvlTree {
     }
     
     /**
-     * Se crea el método isEmpy
+     * Se crea el método isEmpty
      * @param root, pues necesitamos saber si está vacío.
      * @return null, si lo está.
      */
@@ -160,7 +149,12 @@ public class AvlTree {
         
         return existe;
     }
-    
+    /**
+     * Se crea el método Buscar.
+     * Este método sirve para comprobar si un dato esta dentro del árbol
+     * @param data: El dato a buscar
+     * @param root: El nodo donde esta el dato
+     */
     public void buscar(int data, AvlNode root) {
         AvlNode nodoAuxiliar = root;
         boolean existe = false;
@@ -189,7 +183,7 @@ public class AvlTree {
      * Se crea el método MayordeMenores
      * Este método es más que todo para obtener la altura del árbol.
      * @param nodo
-     * @return 
+     * @return el nodo mayor del sector de los menores
      */
     public AvlNode MayordeMenores(AvlNode nodo) {
         AvlNode padre = nodo;
@@ -209,7 +203,7 @@ public class AvlTree {
     /**
      * Se crea el método Eliminar
      * Este método verifica primero si el dato existe.
-     * @param data 
+     * @param data: el nodo a eliminar
      */
     void Eliminar(int data) {
         if ((!Existe(data, root))) {
@@ -257,9 +251,14 @@ public class AvlTree {
         }
         return raiz;
     }
-
-    //   Desequilibrio Interno
-    //     A- Rotacion Derecha - Izquierda
+    /**
+     * Clase RotacionDerIzq
+     * Desequilibrio Interno
+     * Rotacion Derecha - Izquierda
+     * @param root: Nodo que existe en el arbol
+     * @param node1: Nodo a rotar
+     * @return Si esta balanceado o no
+     */
     private AvlNode RotacionDerIzq(AvlNode root, AvlNode node1) {
         AvlNode node2;
         node2 = node1.left;
@@ -281,8 +280,15 @@ public class AvlTree {
         root = node2;
         return root;
     }
-    //B- Rotacion Izquierda - Derecha
-
+    
+    /**
+     * Clase RotacionIzqDer
+     * Desequilibrio Interno
+     * Rotacion Izquierda - Derecha
+     * @param root: Nodo que existe en el arbol
+     * @param node1: Nodo a rotar
+     * @return Si esta balanceado o no
+     */
     private AvlNode RotacionIzqDer(AvlNode root, AvlNode node1) {
 
         AvlNode node2;
@@ -305,9 +311,15 @@ public class AvlTree {
         root = node2;
         return root;
     }
-
-    // Desequilibrio Externo
-    // A- Rotacion Izquierda -Izquierda
+    
+    /**
+     * Clase RotacionIzqDer
+     * Desequilibrio Externo
+     * Rotacion Izquierda -Izquierda
+     * @param root: Nodo que existe en el arbol
+     * @param node1: Nodo a rotar
+     * @return Si esta balanceado o no
+     */
     private AvlNode RotacionIzqIzq(AvlNode root, AvlNode node1) {
         root.left = node1.right;
         node1.right = root;
@@ -323,8 +335,15 @@ public class AvlTree {
         root = node1;
         return root;
     }
-    //B- Rotacion Derecha - Derecha
-
+    
+    /**
+     * Clase RotacionIzqDer
+     * Desequilibrio Externo
+     * Rotacion Derecha - Derecha
+     * @param root: Nodo que existe en el arbol
+     * @param node1: Nodo a rotar
+     * @return Si esta balanceado o no
+     */
     private AvlNode RotacionDerDer(AvlNode root, AvlNode node1) {
         root.right = node1.left;
         node1.left = root;

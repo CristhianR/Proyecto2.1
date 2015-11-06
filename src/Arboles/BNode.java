@@ -1,5 +1,10 @@
 package Arboles;
-
+/**
+ * Se declara la clase BSTNodes.
+ * Por lo general los nodos son como hojas del arbol.
+ * @author Roberto Pereira
+ * @version 06/11/15
+ */
 public class BNode   
 {   
     public int index=-1;   

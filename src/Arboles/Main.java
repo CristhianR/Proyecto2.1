@@ -1,7 +1,10 @@
 package Arboles;
-
-
-
+/**
+ * Se declara la clase Main
+ * Manipulacion de los arboles
+ * @author Roberto Pereira
+ * @version 06/11/15
+ */
 public class Main   
 {   
     public int n;   

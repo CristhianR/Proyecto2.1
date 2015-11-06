@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Arboles;
 
+package Arboles;
 /**
- *
- * @author Arkone
+ * Se declara la clase BT
+ *se encuentra toda la logica del arbol
+ * @author Roberto Pereira
+ * @version 06/11/15
  */
 class BT {
     private BSTNodes root;
@@ -18,19 +15,25 @@ class BT {
         root = null;
     }
  
-    /* Function to check if tree is empty */
+    // Funcion para averiguar si el arbol esta vacio
     public boolean isEmpty() 
     {
         return root == null;
     }
  
-    /* Functions to insert data */
+    // Funcion para insertar key y el valor del nodo 
     public void insert(int data, Object valor) 
     {
         root = insert(root, data, valor);
     }
  
-    /* Function to insert data recursively */
+    /**
+     * Funcion insert para insertar el key recursivamente 
+     * @param node: El arbol en que se encuentra
+     * @param data: Key del nodo
+     * @param valor: Valor del nodo a insertar
+     * @return el nodo
+     */
     private BSTNodes insert(BSTNodes node, int data, Object valor) 
     {   
         
@@ -46,7 +49,10 @@ class BT {
         return node;
     }
  
-    /* Functions to delete data */
+    /**
+     * Funcion delete para eliminar un nodo
+     * @param k: El key del nodo
+     */
     public void delete(int k)
     {
         if (isEmpty())
@@ -103,13 +109,13 @@ class BT {
         return root;
     }
  
-    /* Functions to count number of nodes */
+    // Funcion para contar el numero de nodos
     public int countNodes() 
     {
         return countNodes(root);
     }
  
-    /* Function to count number of nodes recursively */
+    // Funcion para contar numeros de nodos recursivamente
     private int countNodes(BSTNodes r) 
     {
         if (r == null)
@@ -123,13 +129,17 @@ class BT {
         }
     }
  
-    /* Functions to search for an element */
+    /**
+     * Funcion para buscar nodo
+     * @param val: El key del nodo a buscar
+     * @return true o false
+     */
     public boolean search(int val) 
     {
         return search(root, val);
     }
  
-    /* Function to search for an element recursively */
+    // Funcion para buscar un nodo recursivamente
     private boolean search(BSTNodes r, int val) 
     {
         boolean found = false;
@@ -149,12 +159,16 @@ class BT {
         }
         return found;
     }
-    
+    /**
+     * Funcion para buscar nodo
+     * @param val: El key del nodo a buscar
+     * @return true o false
+     */
     public boolean buscar(int val) 
     {
         return buscar(root, val);
     }
-    
+    // Funcion para buscar el nodo recursivamente e imprime dicho nodo
     private boolean buscar(BSTNodes r, int val) 
     {
         boolean found = false;
@@ -178,7 +192,9 @@ class BT {
         return found;
     }
  
-    /* Function for inorder traversal */
+    /**
+     * Funcion para inorder del arbol 
+     */
     public void inorder() 
     {
         inorder(root);
@@ -193,8 +209,9 @@ class BT {
             inorder(r.getRight());
         }
     }
- 
-    /* Function for preorder traversal */
+    /**
+     * Funcion para preorder del arbol 
+     */
     public void preorder() 
     {
         preorder(root);
@@ -210,7 +227,9 @@ class BT {
         }
     }
  
-    /* Function for postorder traversal */
+    /**
+     * Funcion para postorder del arbol 
+     */
     public void postorder() 
     {
         postorder(root);

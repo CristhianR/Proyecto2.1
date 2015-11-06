@@ -1,21 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Arboles;
 
 /**
- *
- * @author Arkone
+ * Se declara la clase BSTNodes
+ * Por lo general los nodos son como hojas del arbol
+ * @author Roberto Pereira
+ * @version 06/11/15
  */
-/* Class BSTNode */
 class BSTNodes {
     BSTNodes left, right;
     int data;
     Object valor;
  
-    /* Constructor */
+    /**
+     * Clase BSTNodes, constructor 
+     */
     public BSTNodes() 
     {
         left = null;
@@ -25,7 +23,11 @@ class BSTNodes {
         
     }
  
-    /* Constructor */
+    /**
+     * Clase BSTNodes, constructor.
+     * @param n: El kay del nodo
+     * @param valo: Valor a guardar en el nodo
+     */
     public BSTNodes(int n, Object valo) 
     {
         left = null;
@@ -33,42 +35,43 @@ class BSTNodes {
         data = n;
         valor = valo;
     }
+    //// Funcion para obtener valor del nodo
     public Object getValor() 
     {
        return valor;
     }
     
-    /* Function to set left node */
+    // Funcion para asignar nodo izquierdo 
     public void setLeft(BSTNodes n) 
     {
         left = n;
     }
  
-    /* Function to set right node */
+    // Funcion para asignar nodo derecho
     public void setRight(BSTNodes n) 
     {
         right = n;
     }
  
-    /* Function to get left node */
+    // Funcion para obtener nodo izquierdo 
     public BSTNodes getLeft() 
     {
         return left;
     }
  
-    /* Function to get right node */
+    // Funcion para obtener nodo derecho
     public BSTNodes getRight() 
     {
         return right;
     }
  
-    /* Function to set data to node */
+    // Funcion para asignar el key del nodo
     public void setData(int d) 
     {
         data = d;
     }
  
-    /* Function to get data from node */
+    // Funcion para obtener key del nodo
     public int getData() 
     {
         return data;

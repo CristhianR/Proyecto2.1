@@ -1,10 +1,9 @@
 package Arboles;
 /**
- *Se declara la clase abb
+ * Se declara la clase abb
  * @author cristhian
  * @version 01/10/15
  */
-import java.util.Random;
 
 public class abb {
  
@@ -32,8 +31,12 @@ public class abb {
     public boolean esVacio(){ // Revisa si el arbol esta vacio
         return (raiz == null);
     }
- 
-    public void insertar(int a, Object valor){ //inserta elemntos al arbol
+    /**
+     * Clase encargada de insertar elemntos al arbol
+     * @param a: Key del nodo
+     * @param valor: Valor del nodo
+     */
+    public void insertar(int a, Object valor){ 
         if (esVacio()) { //comprueba si es vacio
             nodoArbol nuevo = new nodoArbol(); //Si lo es, crea una raiz
             nuevo.val = valor;
@@ -51,7 +54,9 @@ public class abb {
             }
         }
     }  
- 
+    /**
+     * Funcion para pretorder del arbol 
+     */
     public void preOrder(){
         if (!esVacio()) {
             System.out.print( raiz.dato + ", "  );
@@ -59,7 +64,9 @@ public class abb {
             raiz.hd.preOrder();
         }
     }
- 
+    /**
+     * Funcion para inorder del arbol 
+     */
     public void inOrder(){ // Ordena los nodos de menor a mayor
         if (!esVacio()) {
             raiz.hi.inOrder();
@@ -67,7 +74,9 @@ public class abb {
             raiz.hd.inOrder();
         }
     }
- 
+    /**
+     * Funcion para postorder del arbol 
+     */
     public void posOrder(){
         if (!esVacio()) {
             raiz.hd.posOrder();
@@ -76,8 +85,12 @@ public class abb {
  
         }
     }
- 
-    public abb buscar(int a){ // Busca un valor int y lo devuelve como un arbol de un solo nodo
+    /**
+     * Clase que busca un valor int y lo devuelve como un arbol de un solo nodo
+     * @param a: Key del nodo
+     * @return raiz o null
+     */
+    public abb buscar(int a){ 
         abb arbolito = null;
         if (!esVacio()) { //si no es vacio
             if (a == raiz.dato) { //si el valor a es igual al dato de la raiz
@@ -94,7 +107,11 @@ public class abb {
         }
         return arbolito;
     }
- 
+    /**
+     * Clase que busca un valor int y lo devuelve como un arbol de un solo nodo
+     * @param a: Key del nodo
+     * @return imprime el nodo
+     */
     public void existe(int a){ //Comprueba si existe el valor a en un arbol
     if (!esVacio()) { //si no es vacio
             if (a == raiz.dato) { //si el valor de a es igual al dato de la raiz
@@ -110,8 +127,11 @@ public class abb {
             }
         }		
     }
- 
-    public int cantidad(){ //retorna la cantidad de nodos de un arbol
+    /**
+     * Clase cantidad que calcula la cantidad de nodos de un arbol
+     * @return cantidad de nodos de un arbol
+     */
+    public int cantidad(){ 
         if (esVacio()) { // Si esta vacio
             return 0;
         }
@@ -119,8 +139,11 @@ public class abb {
             return (1 + raiz.hd.cantidad() + raiz.hi.cantidad()); //cuenta 1 y cuenta los hijos derechos e izquierdos
         }
     }
- 
-    public int altura() { // Retorna los niveles del arbol
+    /**
+     * Clase altura que calcula los niveles del arbol
+     * @return los niveles del arbol
+     */
+    public int altura() { 
         if (esVacio()) {
             return 0;
         }
@@ -128,8 +151,11 @@ public class abb {
             return (1 + Math.max(((raiz.hi).altura()), ((raiz.hd).altura())));
         }
     }
- 
-    public int buscarMin() { //Busca una hoja sin hijos
+    /**
+     * Clase que busca una hoja sin hijos
+     * @return el nodo hijo
+     */
+    public int buscarMin() { 
         abb arbolActual = this;
         while( !arbolActual.raiz.hi.esVacio() ) {
             arbolActual = arbolActual.raiz.hi;
@@ -148,15 +174,21 @@ public class abb {
             arbolActual.raiz=null;
         return devuelvo;
     }
- 
-    public boolean esHoja() { //comprueba si es hoja
+    /**
+     * Clase que comprueba si es hoja
+     * @return true or false
+     */
+    public boolean esHoja() { 
         boolean hoja = false;
         if( (raiz.hi).esVacio() && (raiz.hd).esVacio() ) {
             hoja = true;
         }
         return hoja;
     }
- 
+    /**
+     * Clase eliminar que ejecuta el removimiento de un nodo del arbol
+     * @param a: Key del nodo 
+     */
     public void eliminar(int a) { // elimina nodos 
         abb paraEliminar = buscar(a); //crea un arbol para eliminar
         if (!paraEliminar.esVacio()) { // si el arbol no es vacio
