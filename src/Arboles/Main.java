@@ -148,27 +148,28 @@ public class Main
         System.out.println("");
         
         //Prueba del arbol B _______________________________
-        B_Tree tree = new B_Tree(3);
+        BT bt = new BT();
         System.out.println("Prueba B: ");
-            
-        tree.insert(tree,6, "a");
-        tree.insert(tree,10, "b");
-        tree.insert(tree,1, "c");
-        tree.insert(tree,40, "d");
-        tree.insert(tree,46, "e");
-            
-        tree.deleteKey(tree,40);
-            
-        tree.SearchPrintNode(tree,10);
-            
-        tree.print(tree.root);
-  
-        System.out.println("");
-        System.out.println("");
+   
+        bt.insert(6, "a");
+        bt.insert(10, "b");
+        bt.insert(1, "c");
+        bt.insert(40, "d");
+        bt.insert(46, "e");
         
+        bt.delete(40);
+        
+        bt.buscar(46);
+        
+        bt.preorder();
+ 
+        System.out.println("");
+        System.out.println("");     
                
         //Prueba del arbol Splay _______________________________
         SplayBST<Integer, Integer> st1 = new SplayBST<Integer, Integer>();
+        System.out.println("Prueba Splay: ");
+        
         st1.put(6, "a");
         st1.put(10, "b");
         st1.put(1, "c");
