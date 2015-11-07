@@ -49,9 +49,20 @@ class clientHandler implements Runnable{
             System.out.println("Mandando mensaje al cliente");
             x = (String) in.readUTF();
             
-            //System.out.println(x);
+            // Aqui se programan las "validaciones", para que el servidor realice la petición y responda.
+           if("Estudiantes".equals(x)){
+               
+               res = "OK";
+               
+           } if("Crear".equals(x)){
+               
+               res = "ok";
+           }
+           else{
+               res = "Comando no existe";
+           }
             
-            res = x.toString();
+            
             
                 
             
