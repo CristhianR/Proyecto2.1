@@ -9,6 +9,7 @@ import Interfaz.Esquemas_columna;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import paquete.Esquema;
 /**
  * Se crea el frame esquema crear de la interfaz
  * @author Eduardo
@@ -97,9 +98,12 @@ public class Esquema_Crear extends javax.swing.JFrame {
         else{
             try {
                 String nombre=jTextField1.getText();
-               // Cliente c = new Cliente();
-                //c.main_esquema_crear(nombre);
-                Esquemas_columna abrir = new Esquemas_columna(nombre);
+                
+                //
+                Esquema esquema = new Esquema(nombre);
+               //textoMensaje.setText("Esquema creado, guarde el esquema");
+                
+                Esquemas_columna abrir = new Esquemas_columna(esquema);
                 abrir.setVisible(true);
                 
                 this.setVisible(false);

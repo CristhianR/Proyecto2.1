@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Interfaz;
-//import Interfaz.Esquema_Crear;
+import paquete.Esquema;
 import javax.swing.JOptionPane;
 /**
  * Se crea el frame esquema columnas main de la interfaz
@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
  */
 
 public class Esquemas_columna extends javax.swing.JFrame {
-    String name;
+    Esquema esquem;
     /**
      * Creates new form Esquemas
      */
     
-    public Esquemas_columna(String nombre) {
-        name=nombre;
+    public Esquemas_columna(Esquema esquema) {
+        esquem=esquema;
         initComponents();
         jTextField4.enable(false);
         jTextField5.enable(false);
