@@ -6,9 +6,11 @@
 package Interfaz;
 
 /**
- *
- * @author Jacqueline
+ * Se crea el frame borrar equema de la interfaz
+ * @author Eduardo
+ * @version 6/10/15
  */
+
 public class Esquema_Borrar extends javax.swing.JFrame {
 
     /**

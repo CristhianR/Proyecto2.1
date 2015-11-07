@@ -92,11 +92,13 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="6">
+            <StringItem index="0" value="Ninguno"/>
+            <StringItem index="1" value="AVL"/>
+            <StringItem index="2" value="BINARIO"/>
+            <StringItem index="3" value="SPLAY"/>
+            <StringItem index="4" value="B"/>
+            <StringItem index="5" value="B+"/>
           </StringArray>
         </Property>
       </Properties>
@@ -110,9 +112,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>

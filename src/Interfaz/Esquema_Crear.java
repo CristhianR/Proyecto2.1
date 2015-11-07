@@ -10,9 +10,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
- *
- * @author Jacqueline
+ * Se crea el frame esquema crear de la interfaz
+ * @author Eduardo
+ * @version 6/10/15
  */
+
 public class Esquema_Crear extends javax.swing.JFrame {
 
     /**
@@ -97,8 +99,9 @@ public class Esquema_Crear extends javax.swing.JFrame {
                 String nombre=jTextField1.getText();
                // Cliente c = new Cliente();
                 //c.main_esquema_crear(nombre);
-                Esquemas_columna abrir = new Esquemas_columna();
+                Esquemas_columna abrir = new Esquemas_columna(nombre);
                 abrir.setVisible(true);
+                
                 this.setVisible(false);
             } catch (Exception ex) {
                 Logger.getLogger(Esquema_Crear.class.getName()).log(Level.SEVERE, null, ex);

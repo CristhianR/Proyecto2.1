@@ -6,9 +6,11 @@
 package Interfaz;
 
 /**
- *
- * @author Jacqueline
+ * Se crea el frame indexar esquema main de la interfaz
+ * @author Eduardo
+ * @version 6/10/15
  */
+
 public class Esquema_indexar extends javax.swing.JFrame {
 
     /**
@@ -43,12 +45,10 @@ public class Esquema_indexar extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Tipo:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "AVL", "BINARIO", "SPLAY", "B", "B+" }));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Campo a indexar:");
-
-        jTextField1.setText("jTextField1");
 
         jButton1.setText("Confirmar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
