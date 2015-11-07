@@ -23,30 +23,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="botonBuscarDat" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonBorrarDat" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="botonCrearEsq" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonAgregarCol" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonAgregarDat" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonBorrarEsq" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonCrearInd" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="botonBorrarInd" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                      <Component id="textoMensaje" pref="323" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="textoInstruccion" max="32767" attributes="0"/>
@@ -54,6 +32,16 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="campoIntro" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="botonCrearEsq" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonAgregarCol" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonAgregarDat" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonBorrarEsq" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="textoMensaje" pref="310" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -67,6 +55,23 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="botonBuscarDat" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="botonCrearInd" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonBorrarDat" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="botonBorrarInd" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,18 +87,25 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="botonAgregarDat" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="botonBuscarDat" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="botonBorrarDat" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="botonCrearInd" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonBorrarInd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonListo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textoMensaje" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="botonListo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textoMensaje" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="botonBorrarInd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="botonBuscarDat" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
               <Component id="textoInstruccion" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -157,11 +169,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear indice"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearIndActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonBorrarInd">
       <Properties>
         <Property name="text" type="java.lang.String" value="Borrar indice"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonBorrarIndActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="campoIntro">
     </Component>
@@ -175,7 +193,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="botonListo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="OK"/>
+        <Property name="text" type="java.lang.String" value="OK/Guardar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonListoActionPerformed"/>

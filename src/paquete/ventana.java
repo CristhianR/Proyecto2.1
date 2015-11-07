@@ -32,6 +32,15 @@ public class ventana extends javax.swing.JFrame {
     int indiceColumnas = 0;
     Object dato;
     ArrayList<Object> datos = new ArrayList<Object>();
+    String busquedaColumna = "";
+    //String busquedaDato = "";
+    int indiceColumna;
+    boolean datoEncontrado;
+    boolean columnaEncontrada = false;
+    String arbolIndexar = "";
+    boolean usarIndice = false;
+    String buscaIndice = "";
+    Object encuentraIndice = null;
    
 
     /**
@@ -109,8 +118,18 @@ public class ventana extends javax.swing.JFrame {
         });
 
         botonCrearInd.setText("Crear indice");
+        botonCrearInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearIndActionPerformed(evt);
+            }
+        });
 
         botonBorrarInd.setText("Borrar indice");
+        botonBorrarInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBorrarIndActionPerformed(evt);
+            }
+        });
 
         botonIntro.setText("Introducir");
         botonIntro.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +138,7 @@ public class ventana extends javax.swing.JFrame {
             }
         });
 
-        botonListo.setText("OK");
+        botonListo.setText("OK/Guardar");
         botonListo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonListoActionPerformed(evt);
@@ -130,31 +149,22 @@ public class ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonBuscarDat)
-                    .addComponent(botonBorrarDat))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonCrearEsq)
-                    .addComponent(botonAgregarCol)
-                    .addComponent(botonAgregarDat)
-                    .addComponent(botonBorrarEsq)
-                    .addComponent(botonCrearInd))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonBorrarInd)
-                        .addGap(77, 77, 77)
-                        .addComponent(textoMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(textoInstruccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(campoIntro)))
+                        .addComponent(campoIntro))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonCrearEsq)
+                            .addComponent(botonAgregarCol)
+                            .addComponent(botonAgregarDat)
+                            .addComponent(botonBorrarEsq))
+                        .addGap(42, 42, 42)
+                        .addComponent(textoMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -163,6 +173,18 @@ public class ventana extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(botonListo)
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(botonBuscarDat)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(botonCrearInd)
+                        .addComponent(botonBorrarDat))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(botonBorrarInd)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,17 +198,21 @@ public class ventana extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonAgregarDat)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonBuscarDat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonBorrarDat)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCrearInd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonBorrarInd)
-                    .addComponent(botonListo)
-                    .addComponent(textoMensaje))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonListo)
+                            .addComponent(textoMensaje)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonBorrarInd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonBuscarDat)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(textoInstruccion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -206,6 +232,9 @@ public class ventana extends javax.swing.JFrame {
 
     private void botonBorrarDatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarDatActionPerformed
         // TODO add your handling code here:
+        botonPresionado = "botonBorrarDat";
+        textoInstruccion.setText("Introduzca el nombre del esquema");
+        textoMensaje.setText("");
     }//GEN-LAST:event_botonBorrarDatActionPerformed
 
     private void botonIntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIntroActionPerformed
@@ -299,13 +328,56 @@ public class ventana extends javax.swing.JFrame {
                        
            case "botonBuscarDat":
                if (esquemaEncontrado){
+                   busquedaColumna = campoIntro.getText();
+                   textoMensaje.setText("");
+                   indiceColumna = esquemas.get(indiceAgregarDat).buscarColumna(busquedaColumna);
+                   if (indiceColumna == -1){
+                       textoMensaje.setText("No se encontro la columna");
+                   } else {
+                       textoMensaje.setText("Columna encontrada");
 
-                   
-               } else if (campoIntro.getText().equals("no")){
+                       campoIntro.setText("");
+                       esquemaEncontrado = false;
+                       columnaEncontrada = true;
+                       if (usarIndice){
+                           textoInstruccion.setText("Introduzca el arbol que desea usar");
+                       } else {
+                           textoInstruccion.setText("Introduzca el dato que desea buscar");  
+                       }
+                   }
+               } else if ((campoIntro.getText().equals("no")) || (campoIntro.getText().equals("si"))){
                    textoInstruccion.setText("Introduzca el esquema en el desea buscar");
-                   campoIntro.setText("");
-               } else if (campoIntro.getText().equals("si")){
-                   
+
+                   if (campoIntro.getText().equals("si")){
+                       usarIndice = true;
+                       campoIntro.setText("");
+                   } else {
+                       usarIndice = false;
+                       campoIntro.setText("");
+                   }
+              
+               } else if ((columnaEncontrada) || (!buscaIndice.equals(""))){
+                   dato = campoIntro.getText();
+                   busquedaColumna = "";
+                   //esquemas.get(indiceAgregarDat).buscarDato(dato, indiceColumna);
+
+                   //columnaEncontrada = false;
+                   if (usarIndice){
+                       if (buscaIndice.equals("")){
+                       arbolIndexar = campoIntro.getText();
+                       buscaIndice = campoIntro.getText();
+                       campoIntro.setText("");
+                       textoInstruccion.setText("introduzca el indice a buscar");
+                       } else {
+                           buscaIndice = campoIntro.getText();
+                           textoMensaje.setText("Desea buscar el indice?");
+                           campoIntro.setText("");
+                       }
+                   } else {
+                       campoIntro.setText("");
+                       textoMensaje.setText("Desea buscar el dato?");
+                   }
+
                } else {
                nombreBusquedaEsq = campoIntro.getText();
                tamañoEsquemas = esquemas.size();
@@ -314,16 +386,144 @@ public class ventana extends javax.swing.JFrame {
                while (indiceEsquemas < tamañoEsquemas){
                    if (nombreBusquedaEsq.equals(esquemas.get(indiceEsquemas).getNombre())){
                         indiceAgregarDat = indiceEsquemas;
-                        textoInstruccion.setText("Introduzca el dato de la columna: "+ esquemas.get(indiceAgregarDat).columnas.get(indiceColumnas).nombre);
+                        textoInstruccion.setText("Introduzca la columna en la que desea buscar");
                         campoIntro.setText("");
                         esquemaEncontrado = true;
-                        textoMensaje.setText("Esquema ´"+ esquemas.get(indiceAgregarDat).getNombre()+ "´ encontrado, agregue los datos");
+                        textoMensaje.setText("");
                         break;
                    }
                    indiceEsquemas ++;
                }   
                }
-               break; 
+               break;
+               
+            case "botonBorrarDat":
+               if (esquemaEncontrado){
+                   busquedaColumna = campoIntro.getText();
+                   textoMensaje.setText("");
+                   indiceColumna = esquemas.get(indiceAgregarDat).buscarColumna(busquedaColumna);
+                   if (indiceColumna == -1){
+                       textoMensaje.setText("No se encontro la columna");
+                   } else {
+                       textoMensaje.setText("Columna encontrada");
+                       textoInstruccion.setText("Introduzca el dato que desea borrar");
+                       campoIntro.setText("");
+                       esquemaEncontrado = false;
+                       columnaEncontrada = true;
+                   }
+ 
+               } else if (columnaEncontrada){
+                   dato = campoIntro.getText();
+                   busquedaColumna = "";
+                   esquemas.get(indiceAgregarDat).buscarDato(dato, indiceColumna);
+                   textoMensaje.setText("Desea borrar el dato?");
+                   campoIntro.setText("");
+                   columnaEncontrada = false;
+                   
+   
+               } else {
+               nombreBusquedaEsq = campoIntro.getText();
+               tamañoEsquemas = esquemas.size();
+               indiceEsquemas = 0;
+               textoMensaje.setText("No se ha encontrado el esquema..");
+               while (indiceEsquemas < tamañoEsquemas){
+                   if (nombreBusquedaEsq.equals(esquemas.get(indiceEsquemas).getNombre())){
+                        indiceAgregarDat = indiceEsquemas;
+                        textoInstruccion.setText("Introduzca la columna en la que desea borrar");
+                        campoIntro.setText("");
+                        esquemaEncontrado = true;
+                        textoMensaje.setText("");
+                        break;
+                   }
+                   indiceEsquemas ++;
+               }   
+               }
+               break;
+                
+       case "botonCrearInd":
+               if (esquemaEncontrado){
+                   busquedaColumna = campoIntro.getText();
+                   textoMensaje.setText("");
+                   indiceColumna = esquemas.get(indiceAgregarDat).buscarColumna(busquedaColumna);
+                   if (indiceColumna == -1){
+                       textoMensaje.setText("No se encontro la columna");
+                   } else {
+                       textoMensaje.setText("Columna encontrada");
+                       textoInstruccion.setText("Introduzca el arbol que desea indexar");
+                       campoIntro.setText("");
+                       esquemaEncontrado = false;
+                       columnaEncontrada = true;
+                   }
+ 
+               } else if (columnaEncontrada){
+                   arbolIndexar = campoIntro.getText();
+                   busquedaColumna = "";
+                   textoMensaje.setText("Desea indexar la columna?");
+                   campoIntro.setText("");
+                   columnaEncontrada = false;
+
+   
+               } else {
+               nombreBusquedaEsq = campoIntro.getText();
+               tamañoEsquemas = esquemas.size();
+               indiceEsquemas = 0;
+               textoMensaje.setText("No se ha encontrado el esquema..");
+               while (indiceEsquemas < tamañoEsquemas){
+                   if (nombreBusquedaEsq.equals(esquemas.get(indiceEsquemas).getNombre())){
+                        indiceAgregarDat = indiceEsquemas;
+                        textoInstruccion.setText("Introduzca la columna que desea indexar");
+                        campoIntro.setText("");
+                        esquemaEncontrado = true;
+                        textoMensaje.setText("");
+                        break;
+                   }
+                   indiceEsquemas ++;
+               }   
+               }
+               break;
+           
+       case "botonBorrarInd":
+               if (esquemaEncontrado){
+                   busquedaColumna = campoIntro.getText();
+                   textoMensaje.setText("");
+                   indiceColumna = esquemas.get(indiceAgregarDat).buscarColumna(busquedaColumna);
+                   if (indiceColumna == -1){
+                       textoMensaje.setText("No se encontro la columna");
+                   } else {
+                       textoMensaje.setText("Columna encontrada");
+                       textoInstruccion.setText("Introduzca el arbol que desea desindexar");
+                       campoIntro.setText("");
+                       esquemaEncontrado = false;
+                       columnaEncontrada = true;
+                   }
+ 
+               } else if (columnaEncontrada){
+                   arbolIndexar = campoIntro.getText();
+                   busquedaColumna = "";
+                   textoMensaje.setText("Desea desindexar la columna?");
+                   campoIntro.setText("");
+                   columnaEncontrada = false;
+
+   
+               } else {
+               nombreBusquedaEsq = campoIntro.getText();
+               tamañoEsquemas = esquemas.size();
+               indiceEsquemas = 0;
+               textoMensaje.setText("No se ha encontrado el esquema..");
+               while (indiceEsquemas < tamañoEsquemas){
+                   if (nombreBusquedaEsq.equals(esquemas.get(indiceEsquemas).getNombre())){
+                        indiceAgregarDat = indiceEsquemas;
+                        textoInstruccion.setText("Introduzca la columna que desea desindexar");
+                        campoIntro.setText("");
+                        esquemaEncontrado = true;
+                        textoMensaje.setText("");
+                        break;
+                   }
+                   indiceEsquemas ++;
+               }   
+               }
+               break;
+           
        }
     }//GEN-LAST:event_botonIntroActionPerformed
 
@@ -359,7 +559,117 @@ public class ventana extends javax.swing.JFrame {
                     textoMensaje.setText("Datos invalidos");
                 }              
                 break;
-              
+           
+            case "botonBuscarDat":
+                if (usarIndice){
+                    usarIndice = false;
+                    switch (arbolIndexar){
+                        case "ArbolBinario":
+                             encuentraIndice = esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).BSTree.buscar(Integer.parseInt(buscaIndice)).raiz.getVal();
+                             if (encuentraIndice.equals(null)){
+                                 textoMensaje.setText("No se encontro el indice"); 
+                                 
+                             } else {
+                                 textoMensaje.setText("Se encontro el indice con el dato: "+ encuentraIndice.toString());
+                                 encuentraIndice = null;
+                             }
+                            break;
+                        
+                        case "ArbolAVL":
+                            break;
+                        
+                        case "ArbolB":
+                            break;
+                        
+                        case "ArbolSplay":
+                            break;
+                          
+                    }
+
+                    
+                } else {
+                datoEncontrado = esquemas.get(indiceAgregarDat).buscarDato(dato, indiceColumna);
+                if (datoEncontrado){
+                    textoMensaje.setText("Se encontro el dato");
+                } else {
+                    textoMensaje.setText("No se encontro el dato");
+                }
+                }
+
+                break;
+            
+            case "botonBorrarDat":
+                datoEncontrado = esquemas.get(indiceAgregarDat).buscarDato(dato, indiceColumna);
+                if (datoEncontrado){
+                    esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).datos.remove(dato);
+                    textoMensaje.setText("Se borro el dato");
+                } else {
+                    textoMensaje.setText("No se encontro el dato");
+                }
+
+                break; 
+                
+            case "botonCrearInd":
+                switch(arbolIndexar){
+                       case "ArbolBinario":
+                           esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).indexarABB();
+                           textoMensaje.setText("Se indexo la columna con un arbol binario");
+                           textoInstruccion.setText("Introduzca el esquema");
+                           break;
+                        
+                       case "ArbolAVL":
+                           esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).indexarAVL();
+                           textoMensaje.setText("Se indexo la columna con un arbol AVL");
+                           textoInstruccion.setText("Introduzca el esquema");
+                           break;
+                      
+                       case "ArbolB":
+                           esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).indexarB();
+                           textoMensaje.setText("Se indexo la columna con un arbol B");
+                           textoInstruccion.setText("Introduzca el esquema");
+                           break;
+                      
+                       case "ArbolSplay":
+                           esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).indexarSplay();
+                           textoMensaje.setText("Se indexo la columna con un arbol Splay");
+                           textoInstruccion.setText("Introduzca el esquema");
+                           break;
+                  
+                }
+                   
+                break;
+                
+           case "botonBorrarInd":
+                switch(arbolIndexar){
+                       case "ArbolBinario":
+                           esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).desindexarABB();
+                           textoMensaje.setText("Se desindexo la columna del arbol binario");
+                           textoInstruccion.setText("Introduzca el esquema");
+                           break;
+                        
+                       case "ArbolAVL":
+                           esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).desindexarAVL();
+                           textoMensaje.setText("Se desindexo la columna del arbol AVL");
+                           textoInstruccion.setText("Introduzca el esquema");
+                           break;
+                      
+                       case "ArbolB":
+                           esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).desindexarB();
+                           textoMensaje.setText("Se desindexo la columna del arbol B");
+                           textoInstruccion.setText("Introduzca el esquema");
+                           break;
+                      
+                       case "ArbolSplay":
+                           esquemas.get(indiceAgregarDat).columnas.get(indiceColumna).desindexarSplay();
+                           textoMensaje.setText("Se desindexo la columna del arbol Splay");
+                           textoInstruccion.setText("Introduzca el esquema");
+                           break;
+                  
+                }
+                   
+                break;         
+                        
+            
         }
         
     }//GEN-LAST:event_botonListoActionPerformed
@@ -397,6 +707,20 @@ public class ventana extends javax.swing.JFrame {
         textoInstruccion.setText("Desea utilizar indice?");
         textoMensaje.setText("");
     }//GEN-LAST:event_botonBuscarDatActionPerformed
+
+    private void botonCrearIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearIndActionPerformed
+        // TODO add your handling code here:
+        botonPresionado = "botonCrearInd";
+        textoInstruccion.setText("Introduzca el nombre del esquema");
+        textoMensaje.setText("");
+    }//GEN-LAST:event_botonCrearIndActionPerformed
+
+    private void botonBorrarIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarIndActionPerformed
+        // TODO add your handling code here:
+        botonPresionado = "botonBorrarInd";
+        textoInstruccion.setText("Introduzca el nombre del esquema");
+        textoMensaje.setText("");
+    }//GEN-LAST:event_botonBorrarIndActionPerformed
 
     /**
      * @param args the command line arguments
